@@ -1,0 +1,74 @@
+CTYPE html>
+<html>
+<head>
+<style>
+html,
+body,
+#map_canvas {
+  margin: 0;
+  padding: 0;
+  height: 100%
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<div id="map_canvas"></div>
+<script>
+      var location1 = new google.maps.LatLng(34.04429454929703, -118.22793351693724);
+      var location2 = new google.maps.LatLng(33.688522885631706, -116.15151750131224);
+
+      var location3 = location1;
+      var location4 = location2;
+
+      var map;
+      var mapOptions = {
+        center: new google.maps.LatLng(42.5584308, -70.8597732),
+        zoom: 3,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      function initialize() {
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer({
+          suppressMarkers: false,
+          suppressInfoWindows: true
+        });
+        directionsDisplay.setMap(map);
+
+        var request = {
+          origin: location1,
+          destination: location2,
+          travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+          }
+        });
+
+
+        //directionsService = new google.maps.DirectionsService();
+        directionsDisplay2 = new google.maps.DirectionsRenderer({
+          suppressMarkers: false,
+          suppressInfoWindows: true
+        });
+        directionsDisplay2.setMap(map);
+
+        var request = {
+          origin: location3,
+          destination: location4,
+          travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay2.setDirections(response);
+          }
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</body>
+</html>
+
