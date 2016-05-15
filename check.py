@@ -35,10 +35,11 @@ call_yelp(mid1,mid2,r)
 s_loc_t=np.genfromtxt("./output_yelp.txt",delimiter=',',dtype=float)
 #print np.shape(s_loc_t)
 
-s_loc=np.zeros((np.shape(s_loc_t)[0]+2,np.shape(s_loc_t)[1]))
+s_loc=np.zeros((np.shape(s_loc_t)[0]+2,2))
 s_loc[0,0]=lat1
+#print s_loc
 s_loc[0,1]=long1
-s_loc[1:-1,:]=s_loc_t[:,:]
+s_loc[1:-1,:]=s_loc_t[:,0:2]
 s_loc[-1,0]=lat2
 s_loc[-1,1]=long2
 #print s_loc
@@ -62,7 +63,10 @@ s4=[[ 7.96344447,  2.14988616],
 
 def mvg(w,m,s,x):
 	a=1.0/(np.sqrt(((2*np.pi)**2)*np.linalg.det(s)))
+	#print x
+	#print m
 	b=x-m
+	
 	c = np.dot(np.dot(b.T,np.linalg.inv(s)),b)
 	#print np.linalg.det(s)
 	#print m

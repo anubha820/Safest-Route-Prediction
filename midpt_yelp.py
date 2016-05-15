@@ -9,7 +9,7 @@ def con_gps(address):
 #Con_sec = 'dI6pXbJaFu6pmrie'
 	mapq.key(Con_key)#,Con_sec)
 	gps=mapq.geocode(address)['displayLatLng']
-	return float( gps['lat']),int(gps['lng'])
+	return float( gps['lat']),float(gps['lng'])
 
 #Origin
 address1="Columbus Ave,New York,New York"
@@ -65,8 +65,8 @@ def call_yelp(midlat,midlong,radius):
 	f = open('output_yelp.txt','w+')
 
 	for i in range(0,len(response.businesses)):
-        	f.write(response.businesses[i].name)
-        	f.write(",")
+        	#f.write(response.businesses[i].name)
+        	#f.write(",")
        	 	f.write('%f' % response.businesses[i].location.coordinate.latitude)
         	f.write(",")
         	f.write('%f' % response.businesses[i].location.coordinate.longitude)
