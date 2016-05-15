@@ -105,10 +105,13 @@ if (status == google.maps.GeocoderStatus.OK) {
         }
 });
 
+//call Gabriel's code
+
 var lat = [];
 var lon = [];
 var WordFile = new XMLHttpRequest();
-        WordFile.open("GET","file:///home/bigdata/AdvBigData/Safe_Route_NYC/node_modules/xlsx-to-json/nyc/coord.txt",false);
+	WordFile.open("GET","file:///home/bigdata/AdvBigData/Safe_Route_NYC/results.txt",false);
+//        WordFile.open("GET","file:///home/bigdata/AdvBigData/Safe_Route_NYC/node_modules/xlsx-to-json/nyc/coord.txt",false);
         WordFile.onreadystatechange = 
                 function() {
                         if(WordFile.readyState === 4)
@@ -143,8 +146,8 @@ var WordFile = new XMLHttpRequest();
 	directionsService.route({
 	origin: document.getElementById('source').value,
         destination: document.getElementById('dest').value,
-	//  origin: {lat: Number(lat[0]), lng: Number(lon[0])},
-        //  destination: {lat: Number(lat[lat.length - 2]), lng: Number(lon[lon.length - 2])},
+//	 origin: {lat: Number(lat[0]), lng: Number(lon[0])},
+//         destination: {lat: Number(lat[lat.length - 2]), lng: Number(lon[lon.length - 2])},
           waypoints: waypts,
           optimizeWaypoints: true,
           travelMode: google.maps.TravelMode.WALKING
