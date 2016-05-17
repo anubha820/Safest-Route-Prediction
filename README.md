@@ -11,5 +11,3 @@ Finally run check.py this will get the waypoint coordinates.
 
 Finally run plot_route.html and enter the coordinates of origin and destination, the "safest route" will be plot along with walking directions.
 
-Run check.py , enter the origin and destination there, the waypoints will be written in result.txt These coordinates will be run by
-the javascript.
